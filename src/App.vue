@@ -40,7 +40,7 @@ body {
 
 
 #app {
-  font-size: 3.2rem;
+  font-size: 3.6rem;
   background-color: #000;
   color: #eee;
   width: 100%;
@@ -49,6 +49,7 @@ body {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  user-select: none;
 }
 
 div {
@@ -58,7 +59,48 @@ div {
 
 input {
   background-color: rgba(0, 0, 0, 0);
-  border: none;
+  border: 1px solid rgba(0, 0, 0, 0);
   outline: none;
+  color: #fff;
+  transition: all ease .2s;
+
+  &:focus {
+    border: 1px solid #fff;
+  }
+}
+
+
+// 背景旋转
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) scale(2.5);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(2.5);
+  }
+}
+
+.roll_bg {
+  background: linear-gradient(45deg, red, white, yellow);
+  animation: rotate 2s linear infinite;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  transform-origin: 50% 50%;
+  transform: scale(2.5);
+  width: 100%;
+  height: 100%;
+}
+
+.roll_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: calc(100% - 1rem);
+  height: calc(100% - 1rem);
+  background-color: #000;
 }
 </style>
